@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html ng-app="myApp.controllers">
+<head>
+    <meta charset="utf-8" />
+    <title>Empeek</title>
+   
+    <!-- <link href="app/app.css" rel="stylesheet" /> -->
+
+
+</head>
+<body>
+<body ng-controller="ItemsCtrl">
+		<div class="layout">
+			<div class="sidebar">
+				<h1>Main</h1>
+				<nav>
+					<ul>
+						<li>
+							<a href="index.html">Overview</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+			<div class="content">
+				<div class="items">
+					<h1>Items</h1>
+
+<input ng-model='newItem' name="newItem" type="text" class="add-name" placeholder="Type name here...">
+		  <button type="button" ng-click="addNew(newItem)" class="add-button">Add new</button>
+
+					<div class="active-item"></div>
+					<div class="items-list" ng-repeat="item in items track by $index"  ng-class="{ active: item.isActive }">
+						<div ng-click="ShowHide(item, $event)" ng-class="{sel: $index == selected}">
+							{{item.name}}
+							<div class="comment-counter">
+								{{item.comments.length}}
+							</div>
+						</div>
+						<button class="del-button" type="button" ng-click="deleteItem(item)">Delete</button>
+					</div>
+				</div>
+
+				<div class="comments-list" ng-show = "IsVisible">
+					<h1>Comments {{ '#' + (items.indexOf(item) + 1)  }}</h1>
+					<div class="comment" ng-repeat="comment in item.comments track by $index">
+						<div class="img"></div>
+						<div class="comment-text">
+							{{ comment }}
+						</div>
+					</div>
+					<div class="new-comment">
+						<div class="img" ng-submit="addBoxColor()"></div>
+						<form class="comments-input" ng-submit="addComment(newComment, item)">
+                             <input type="text" ng-model="newComment" name="newComment" autocomplete="off" />
+                        </form>
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+
+
+
+   
+
+
+
+    <script src="vendor/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.11/ngStorage.min.js"> </script>
+    
+
+
+    <script src="app/app.module.js"></script>
+    <script src="app/items.service.js"></script>
+    <script src="app/items/items.controller.js"></script>
+
+</body>
+</html>
