@@ -1,2 +1,2 @@
-var app = angular.module('myApp.controllers', ['ngStorage']);
+var app = angular.module('Empeek_app', ['ngStorage']);
 

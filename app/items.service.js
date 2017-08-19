@@ -1,5 +1,5 @@
 app.service('Items', ['$localStorage', function($localStorage) {
-   // $localStorage.$reset();
+   $localStorage.$reset();
   
    let items = [];
 
