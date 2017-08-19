@@ -1,5 +1,5 @@
 app.service('Items', ['$localStorage', function($localStorage) {
-   $localStorage.$reset();
+   // $localStorage.$reset();
   
    let items = [];
 
@@ -30,7 +30,6 @@ app.service('Items', ['$localStorage', function($localStorage) {
             comments: []
          };
          items.push(singleItem);
-         this.setLocalStorage();
       },
       deleteItem: function(index) {
          items.splice(index, 1);

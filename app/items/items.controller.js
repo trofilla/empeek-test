@@ -1,10 +1,13 @@
- app.controller('ItemsCtrl', ['$scope', 'Items', function ($scope, Items) {
+ app.controller('ItemsCtrl', ['$scope', 'Items', 
+    function ($scope, Items) {
+
         $scope.items = Items.getItems();
         $scope.IsVisible = false;
        
-        $scope.addNew = function(newItem){
-        	Items.addNewItem(newItem);
-            // Items.setLocalStorage();
+        $scope.addNew = function(item){
+        	Items.addNewItem(item);
+            console.log($scope.newItem);
+            $scope.newItem = '';
         };
 
         $scope.deleteItem = function(item){
@@ -31,12 +34,6 @@
      
         };
 
-         $scope.saveToLs = function(){
-           // $localStorage.savedData = $scope.items;
-           // console.log($localStorage.savedData); 
-        };
-
-
-    }]);
+}]);
 
  
